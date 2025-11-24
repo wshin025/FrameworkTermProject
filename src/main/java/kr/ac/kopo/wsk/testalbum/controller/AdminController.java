@@ -20,7 +20,7 @@ public class AdminController {
     private final AlbumService service;
     private final String uploadDir = System.getProperty("user.home") + "/album_images";
 
-    /** 로그인 페이지 */
+
     @GetMapping("/login")
     public String loginPage(HttpSession session) {
         if (session.getAttribute("admin") != null) {
@@ -29,7 +29,7 @@ public class AdminController {
         return "admin_login";
     }
 
-    /** 로그인 처리 */
+
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password,
@@ -45,14 +45,14 @@ public class AdminController {
         return "admin_login";
     }
 
-    /** 로그아웃 */
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/admin/login";
     }
 
-    /** 관리자 메인: 앨범 목록 */
+
     @GetMapping
     public String adminHome(HttpSession session, Model model) {
         if (session.getAttribute("admin") == null) {
@@ -62,7 +62,7 @@ public class AdminController {
         return "admin";
     }
 
-    /** 앨범 추가 화면 */
+
     @GetMapping("/add")
     public String addPage(HttpSession session) {
         if (session.getAttribute("admin") == null) {
@@ -71,7 +71,7 @@ public class AdminController {
         return "admin_add";
     }
 
-    /** 앨범 추가 처리 */
+
     @PostMapping("/add")
     public String addAlbum(@RequestParam String title,
                            @RequestParam String description,
@@ -93,7 +93,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    /** 수정 화면 */
+
     @GetMapping("/edit/{id}")
     public String editAlbum(@PathVariable Long id,
                             HttpSession session,
@@ -111,7 +111,7 @@ public class AdminController {
         return "admin_edit";
     }
 
-    /** 수정 처리 */
+
     @PostMapping("/update")
     public String updateAlbum(@RequestParam Long id,
                               @RequestParam String title,
@@ -144,7 +144,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    /** 삭제 */
+
     @GetMapping("/delete/{id}")
     public String deleteAlbum(@PathVariable Long id, HttpSession session) {
         if (session.getAttribute("admin") == null) {
