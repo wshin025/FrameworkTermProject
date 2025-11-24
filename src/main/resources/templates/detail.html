@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${album.title}">앨범 상세</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="detail-wrapper">
+
+  <a href="/" class="back-link">← 메인으로</a>
+
+  <div class="detail-card">
+    <img th:src="${album.imageUrl}" alt="앨범 이미지" class="detail-image">
+
+    <div class="detail-album-title" th:text="${album.title}"></div>
+
+    <p class="detail-description" th:text="${album.description}"></p>
+
+    <div class="detail-bottom-title" th:text="${album.title}"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

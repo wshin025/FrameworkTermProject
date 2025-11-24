@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>IU Album Archive</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <div>
+      <div class="site-title">IU ALBUM ARCHIVE</div>
+      <div class="site-subtitle">아이유 앨범을 모아보는 작은 아카이브</div>
+    </div>
+    <div>
+      <a href="/admin/login">ADMIN MODE</a>
+    </div>
+  </header>
+
+  <div th:if="${#lists.isEmpty(albums)}" class="empty-state">
+    아직 등록된 앨범이 없습니다.<br>
+    관리자 모드에서 첫 번째 아이유 앨범을 추가해보세요 🎧
+  </div>
+
+  <div th:if="${!#lists.isEmpty(albums)}" class="album-grid">
+    <a th:each="album : ${albums}"
+       th:href="@{'/album/' + ${album.id}}"
+       class="album-card">
+      <img th:src="${album.imageUrl}" alt="앨범 이미지">
+      <div class="album-title" th:text="${album.title}"></div>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

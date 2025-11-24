@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>IU 앨범 관리</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+  <header class="site-header">
+    <div>
+      <div class="site-title">ADMIN · IU ALBUMS</div>
+      <div class="site-subtitle">아이유 앨범을 추가 · 수정 · 삭제하는 관리자 화면</div>
+    </div>
+    <div>
+      <a href="/">USER PAGE</a>
+      <a href="/admin/logout" style="margin-left:8px;">LOGOUT</a>
+    </div>
+  </header>
+
+  <div class="card-panel">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <h3 style="font-size:16px;">앨범 목록</h3>
+      <a href="/admin/add" class="btn">+ 앨범 추가</a>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>커버</th>
+        <th>제목</th>
+        <th>설명</th>
+        <th>관리</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="album : ${albums}">
+        <td th:text="${album.id}"></td>
+        <td>
+          <img th:src="${album.imageUrl}" alt="" class="admin-thumb">
+        </td>
+        <td th:text="${album.title}"></td>
+        <td th:text="${album.description}"></td>
+        <td>
+          <a th:href="@{'/admin/edit/' + ${album.id}}">수정</a> |
+          <a th:href="@{'/admin/delete/' + ${album.id}}"
+             onclick="return confirm('정말 삭제할까요?');">삭제</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+</body>
+</html>

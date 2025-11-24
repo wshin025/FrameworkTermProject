@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>앨범 추가</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+    <div class="card-panel" style="max-width: 640px; margin: 0 auto;">
+
+        <h2 class="login-title">ADD NEW ALBUM</h2>
+
+        <form action="/admin/add" method="post" enctype="multipart/form-data">
+
+            <div class="form-field">
+                <label>앨범 이름</label>
+                <input type="text" name="title" required>
+            </div>
+
+            <div class="form-field">
+                <label>설명</label>
+                <textarea name="description" rows="5" required></textarea>
+            </div>
+
+            <div class="form-field">
+                <label>이미지 파일</label>
+                <input type="file" name="file" accept="image/*" required>
+            </div>
+
+            <div style="margin-top: 18px; display:flex; gap:10px; justify-content:flex-end;">
+                <a href="/admin" class="btn btn-secondary">취소</a>
+                <button type="submit" class="btn">등록</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
